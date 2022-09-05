@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.alfayedoficial.coreModel.local.AsteroidEarth" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardElevation="@dimen/_2sdp"
+        app:cardMaxElevation="@dimen/_1sdp"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:baselineAligned="false"
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:padding="@dimen/_7sdp">
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@{model.name}"
+                    android:text="@{model.name}"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
+                    tools:text="TEXT TEST" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@{model.name}"
+                    android:text="@{model.name}"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    tools:text="TEXT TEST" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/Asteroid_image"
+                app:bindIcon="@{model.isPotentiallyHazardousAsteroid}"
+                android:layout_width="wrap_content"
+                tools:src="@drawable/ic_status_potentially_hazardous"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/Asteroid_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/Asteroid_title"
+                tools:ignore="ContentDescription" />
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

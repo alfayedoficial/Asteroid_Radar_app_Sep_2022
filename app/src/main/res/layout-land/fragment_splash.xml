@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="fragment"
+            type="com.alfayedoficial.asteroidradar.ui.features.splash.view.SplashFragment" />
+    </data>
+    <!-- is a view group that aligns all children in a single direction, vertically or horizontally.-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.features.splash.view.SplashFragment">
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_view"
+            android:layout_width="@dimen/_170sdp"
+            android:layout_height="@dimen/_170sdp"
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/asteroid" />
+
+    </LinearLayout>
+</layout>

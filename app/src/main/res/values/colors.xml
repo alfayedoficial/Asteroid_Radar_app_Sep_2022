@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="purple_200">#010613</color>
+	<color name="purple_500">#010613</color>
+	<color name="purple_700">#010613</color>
+	<color name="teal_200">#FFB300</color>
+	<color name="teal_700">#B16B04</color>
+	<color name="black">#FF000000</color>
+	<color name="white">#FFFFFFFF</color>
+
+	<color name="textFont">#3C3C3C</color>
+	<color name="athens_gray">#e8e9ec</color>
+	<color name="athens_gray2">#C9C9C9</color>
+	<color name="athens_gray3">#55010613</color>
+	<color name="TemplateGreen">#2BA951</color>
+	<color name="colorPrimary">#444D58</color>
+	<color name="background">#dddddd</color>
+
+</resources>

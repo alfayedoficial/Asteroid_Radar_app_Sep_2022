@@ -1,0 +1,146 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+
+}
+
+
+android {
+
+    namespace Android.applicationId
+    compileSdk Android.compileSDK
+    ndkVersion Android.ndkVersion
+
+    defaultConfig {
+        applicationId Android.applicationId
+        minSdk Android.minSDK
+        targetSdk Android.targetSDK
+        versionCode Android.versionCode
+        versionName Android.versionName
+
+        // default config
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        // NAME APK
+        var timeStamp = new Date().format('yyyy.MM.dd_HHmm');
+        var nameApk = "${Android.applicationId}-v${Android.versionName}(${Android.versionCode}) date=${timeStamp}"
+        setProperty("archivesBaseName", nameApk)
+
+    }
+
+    buildTypes {
+        release {
+            manifestPlaceholders = [crashlyticsEnabled: true]
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            //Other parameters
+            shrinkResources false
+            debuggable false
+            jniDebuggable false
+
+        }
+
+        debug {
+            manifestPlaceholders = [crashlyticsEnabled: false]
+            minifyEnabled true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    bundle {
+        language {
+            // Specifies that the app bundle should not support
+            // configuration APKs for language resources. These
+            // resources are instead packaged with each base and
+            // dynamic feature APK.
+            enableSplit = false
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+
+
+}
+
+dependencies {
+
+    implementation project(path: ':core-data')
+    implementation project(path: ':core-model')
+    implementation project(path: ':core-source')
+
+
+    /*-----------Main Dependencies-----------*/
+    implementation Libs.coreExt
+    implementation Libs.appCompat
+    implementation Libs.fragmentKtx
+    implementation Libs.activityKtx
+    implementation Libs.preferenceKtx
+    implementation Libs.multidex
+
+    /*-----------UI Dependencies-------------*/
+    implementation Libs.material
+    implementation Libs.constraintLayout
+    implementation Libs.recyclerview
+    implementation Libs.swipeRefreshLayout
+    implementation Libs.circleImageview
+    implementation Libs.sdp
+    implementation Libs.ssp
+
+    /*-----------Navigation Dependencies-----*/
+    implementation Libs.navigationFragment
+    implementation Libs.navigationUi
+    implementation Libs.navigationDynamic
+
+    /*-----------Thread Dependencies---------*/
+    implementation(Libs.coroutinesAndroid)
+    implementation(Libs.coroutinesCore)
+    implementation(Libs.hiltAndroid)
+    implementation 'androidx.hilt:hilt-common:1.0.0'
+    kapt(Libs.hiltDaggerCompiler)
+    implementation(Libs.workManager)
+
+    /*-----------Github Tools Dependencies---------*/
+    implementation Libs.shimmer
+    implementation Libs.lottie
+    implementation Libs.kotlinUtils
+    implementation Libs.androidAnimations
+    implementation Libs.picasso
+    implementation(Libs.retrofit)
+    implementation(Libs.dotsIndicator)
+
+    /*-----------Test Dependencies------------*/
+    implementation TestLibs.legacySupport
+    testImplementation TestLibs.junit
+    androidTestImplementation TestLibs.extJunit
+    androidTestImplementation TestLibs.espresso
+    androidTestImplementation TestLibs.navigationTesting
+
+}
